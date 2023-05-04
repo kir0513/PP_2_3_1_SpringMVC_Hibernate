@@ -11,6 +11,7 @@ import web.config.dao.UserDaoImp;
 @Controller
 @RequestMapping("/")
 public class UserController {
+    //
     //внедряем зависимость userDao в контроллер через конструктор
     private final UserDaoImp userDaoImp;
 

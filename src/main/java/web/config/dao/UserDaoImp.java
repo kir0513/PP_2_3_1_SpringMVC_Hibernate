@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class UserDaoImp {
+    //
     private List<User> user;
     {
         user = new ArrayList<>();
