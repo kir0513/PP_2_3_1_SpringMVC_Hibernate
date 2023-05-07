@@ -1,11 +1,12 @@
 package web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import web.config.dao.UserDaoImp;
-import web.config.model.User;
+import web.model.User;
+import web.service.UserService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -13,23 +14,25 @@ public class UserController {
     //
     //внедряем зависимость userDao в контроллер через конструктор
 
-    private final UserDaoImp userDaoImp;
+    private final UserService userService;
 
-    public UserController(UserDaoImp userDaoImp) {
-        this.userDaoImp = userDaoImp;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     //метод возвращающий список пользователей. Здесь получаем всех людей из DAO и передаем их на отображение
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("user", userDaoImp.index());
+       // model.addAttribute("user", userDaoImp.index());
+        List<User> list = userService.getUsers();
+        model.addAttribute("listUsers", list);
         return "user/index";
     }
 
     //поиск пользователя по id из DAO и передаем на представление
     @GetMapping("user/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userDaoImp.show(id));
+        model.addAttribute("user", userService.getSingleUserById(id));
         return "user/show";
     }
 
@@ -42,25 +45,25 @@ public class UserController {
     //метод, принимающий Post запрос создающий пользователя и добавляющий его в БД
     @PostMapping("addUser")
     public String createNewUser(@ModelAttribute("user") User user) {
-        userDaoImp.save(user);
+        userService.addUser(user);
         return "redirect:/";
     }
 
     @GetMapping("/user/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userDaoImp.show(id));
+        model.addAttribute("user", userService.getSingleUserById(id));
         return "user/edit";
     }
 
    @PatchMapping("/user/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
-        userDaoImp.update(id, user);
+        userService.update(user);
         return "redirect:/";
     }
 
     @DeleteMapping("user/{id}")
     public String delete(@PathVariable("id") int id) {
-        userDaoImp.delete(id);
+        userService.delete(id);
         return "redirect:/";
     }
 }

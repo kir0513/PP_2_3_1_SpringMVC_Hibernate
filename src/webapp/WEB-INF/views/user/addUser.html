@@ -11,6 +11,10 @@
     <input type="text" th:field="*{firstName} " id="firstName" required placeholder="Ваше имя" />
     <label for="lastName">Enter last name: </label>
     <input type="text" th:field="*{lastName}" id="lastName"/>
+    <label for="age">Enter Age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <label for="email">Enter email: </label>-->
+    <input type="text" th:field="${user.age}" id="email"/>
     <br/>
     <input type="submit" value="Create!"/>
 </form>
