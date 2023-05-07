@@ -8,20 +8,39 @@ import java.util.List;
 @Component
 public class UserDaoImp {
     //
-    private List<User> user;
+    private static int People_COUNT;
+    private List<User> people;
     {
-        user = new ArrayList<>();
-        user.add(new User(1, "User1", "User11", 20));
-        user.add(new User(2, "User2", "User22", 21));
-        user.add(new User(3, "User3", "User33", 22));
-        user.add(new User(4, "User4", "User44", 23));
+        people = new ArrayList<>();
+        people.add(new User(++People_COUNT, "User1", "User11", 20));
+        people.add(new User(++People_COUNT, "User2", "User22", 21));
+        people.add(new User(++People_COUNT, "User3", "User33", 22));
+        people.add(new User(++People_COUNT, "User4", "User44", 23));
     }
     //получаем всех пользователей
     public List<User> index(){
-        return user;
+        return people;
     }
     //ищем по id
     public User show(int id){
-        return (User) user.stream().filter(user -> user.getId() == id ).findAny().orElse(null);
+        return (User) people.stream().filter(people -> people.getId() == id ).findAny().orElse(null);
+    }
+
+    public void save(User user) {
+        user.setId(++People_COUNT);
+        people.add(user);
+    }
+
+
+  //  public void update(int id, User updateUser) {
+  public void update(int id, User updatedPerson) {
+        User userToBeUpdated = show(id);
+        userToBeUpdated.setFirstName(updatedPerson.getFirstName());
+        userToBeUpdated.setLastName(updatedPerson.getLastName());
+      userToBeUpdated.setAge(updatedPerson.getAge());
+    }
+
+    public void delete(int id) {
+        people.removeIf(p -> p.getId()==id);
     }
 }

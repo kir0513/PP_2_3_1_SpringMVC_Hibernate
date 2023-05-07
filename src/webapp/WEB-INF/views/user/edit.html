@@ -1,0 +1,40 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Update User</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form th:method="patch" th:action="@{/edit(id=${user.getId()})}" th:object="${user}">-->
+<!--&lt;!&ndash;<form th:method="PATCH" th:action="@{/user/{id}(id=${user.getId()})}" th:object="${user}">&ndash;&gt;-->
+<!--  <label for="name">Enter name: </label>-->
+<!--  <input type="text" th:field="${user.firstName}" id="name"/>-->
+<!--  <br/>-->
+<!--  <input type="submit" value="Update!"/>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<form th:method="patch" th:action="@{/user/{id}(id=${user.getId()})}" th:object="${user}">
+
+<label for="firstname">Enter First Name: </label>-->
+<input type="text" th:field="${user.firstName}" id="firstname"/>
+<label for="lastname">Enter Last Name: </label>-->
+<input type="text" th:field="${user.lastName}" id="lastname"/>
+<label for="age">Enter age: </label>-->
+<input type="text" th:field="${user.age}" id="age"/>
+
+<br/>
+<input type="submit" value="Update!"/>
+</form>
+
+
+</body>
+</html>

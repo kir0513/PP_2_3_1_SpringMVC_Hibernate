@@ -5,8 +5,37 @@
     <title>Пользователи</title>
 </head>
 <body>
-<div th:each="user : ${user}">
-    <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.getFirstName()}">user</a>
-</div>
+    <div class="asd">
+        <a th:href = "@{/}">To main page</a>
+    </div>
+    <br>
+
+<!--    <table border="1">-->
+<!--        <thead>-->
+<!--            <tr>-->
+<!--                <th>zagolovok1</th>-->
+<!--                <th>zagolovok2</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            <tr>-->
+<!--                <td>stroka1 zagolovok1</td>-->
+<!--                <td>stroka1 zagolovok2</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>stroka2 zagolovok1</td>-->
+<!--                <td>stroka2 zagolovok2</td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+    <div th:each="user : ${user}">
+        <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.toString()}"  ></a>
+    </div>
+    <br>
+    <div>
+        <a th:href = "@{/addUser}">Add new User</a>
+    </div>
+
 </body>
 </html>
