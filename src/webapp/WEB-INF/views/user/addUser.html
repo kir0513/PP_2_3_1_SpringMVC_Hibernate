@@ -8,13 +8,13 @@
 
 <form th:method="POST" th:action="@{/addUser}" th:object="${user}">
     <label for="firstName">Enter first name: </label>
-    <input type="text" th:field="*{firstName} " id="firstName" required placeholder="Ваше имя" />
+    <input type="text" th:field="*{firstName} " id="firstName" required placeholder="First Name" />
     <label for="lastName">Enter last name: </label>
-    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <input type="text" th:field="*{lastName}" id="lastName" required placeholder="Last Name"/>
     <label for="age">Enter Age: </label>
-    <input type="text" th:field="*{age}" id="age"/>
+    <input type="text" th:field="*{age}" id="age" required placeholder="Age"/>
     <label for="email">Enter email: </label>-->
-    <input type="text" th:field="${user.age}" id="email"/>
+    <input type="text" th:field="${user.age}" id="email" required placeholder="Email"/>
     <br/>
     <input type="submit" value="Create!"/>
 </form>

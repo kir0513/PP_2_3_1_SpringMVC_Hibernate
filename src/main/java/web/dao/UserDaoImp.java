@@ -1,5 +1,6 @@
 package web.dao;
 
+import jakarta.transaction.Transaction;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import web.model.User;
