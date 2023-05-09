@@ -28,7 +28,7 @@ import java.util.Objects;
         private String lastName;
 
         @Column(name = "age")
-        @Min(value = 0, message = "Age should be greater than 0")
+        @NotEmpty(message = "Age should be greater than 0")
         private int age;
 
         @NotEmpty(message = "Email should not be empty")

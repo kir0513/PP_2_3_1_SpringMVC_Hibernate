@@ -28,8 +28,23 @@
 <!--            </tr>-->
 <!--        </tbody>-->
 <!--    </table>-->
+<!--    <th:block th:each="user : ${listUsers}">-->
+<!--        <tr th:align=center>-->
+<!--            <td th:text = "${user.getId()}"></td>-->
+<!--            <td th:text = "${user.getFirstName()}"></td>-->
+<!--            <td th:text = "${user.getLastName()}"></td>-->
+<!--            <td th:text = "${user.getAge()}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/show_single_user(id = ${user.getId()})}"> Просмотреть </a>-->
+<!--                &nbsp / &nbsp-->
+<!--                <a th:href="@{/edit_user(id=${user.getId()})}"> Редактировать </a>-->
+<!--                &nbsp / &nbsp-->
+<!--                <a th:href="@{/delete_user(id=${user.getId()})}"> Удалить </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </th:block>-->
 
-    <div th:each="user : ${user}">
+    <div th:each="user : ${listUsers}">
         <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.toString()}"  ></a>
     </div>
     <br>

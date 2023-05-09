@@ -1,6 +1,4 @@
 package web.dao;
-
-import jakarta.transaction.Transaction;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import web.model.User;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @SuppressWarnings("JpaQlInspection")
 @Repository
-public class UserDaoImp implements web.dao.UserDao {
+public class UserDaoImp implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -26,8 +24,8 @@ public class UserDaoImp implements web.dao.UserDao {
     @Override
     @Transactional
     public void addUser(User user) {
-        entityManager.persist(user);
-    }
+       entityManager.persist(user);
+   }
 
     @Override
     public User getSingleUserById(int id) {

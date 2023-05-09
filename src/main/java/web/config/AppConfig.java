@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -22,6 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("web")
 @PropertySource("classpath:db.properties")
+@EnableWebMvc
 public class AppConfig {
 
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
