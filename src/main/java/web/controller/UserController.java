@@ -54,6 +54,12 @@ public class UserController {
             return "redirect:/";
         }
     }
+//    @PostMapping("addUser")
+//    public String createNewUser(@ModelAttribute("user") User user) {
+//        System.out.println(user);
+//        userService.addUser(user);
+//        return "redirect:/";
+//    }
 
     @GetMapping("/user/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {

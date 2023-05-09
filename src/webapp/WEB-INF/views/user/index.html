@@ -5,25 +5,29 @@
     <title>Пользователи</title>
 </head>
 <body>
-<h2>Список пользователей</h2>
-<br>
+    <div class="asd">
+        <a th:href = "@{/}">To main page</a>
+    </div>
+    <br>
 
-<!--<a th:href="@{/add_user}">Добавить пользователя</a>-->
-<!--form th:method="DELETE" th:action="@{/user/{id}(id=${user.getId()})}">-->
-<!--    <input type="submit" value="Добавить"/>-->
-<!--</form>-->
-<!--<br>-->
-
-<!--<table th:border="1">-->
-
-<!--    <tr th:align=center>-->
-<!--        <td><b>Id</b></td>-->
-<!--        <td><b>Имя</b></td>-->
-<!--        <td><b>Фамилия</b></td>-->
-<!--        <td><b>Возраст</b></td>-->
-<!--        <td><b>Действия</b></td>-->
-<!--    </tr>-->
-
+<!--    <table border="1">-->
+<!--        <thead>-->
+<!--            <tr>-->
+<!--                <th>zagolovok1</th>-->
+<!--                <th>zagolovok2</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            <tr>-->
+<!--                <td>stroka1 zagolovok1</td>-->
+<!--                <td>stroka1 zagolovok2</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>stroka2 zagolovok1</td>-->
+<!--                <td>stroka2 zagolovok2</td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
 <!--    <th:block th:each="user : ${listUsers}">-->
 <!--        <tr th:align=center>-->
 <!--            <td th:text = "${user.getId()}"></td>-->
@@ -40,17 +44,13 @@
 <!--        </tr>-->
 <!--    </th:block>-->
 
-<!--</table>-->
-
-<!--          *********************************************-->
     <div th:each="user : ${listUsers}">
         <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.toString()}"  ></a>
     </div>
     <br>
     <div>
-        <a th:href = "@{/addUser}">Добавить нового пользователя</a>
+        <a th:href = "@{/addUser}">Add new User</a>
     </div>
-    <!--*********************************************-->
 
 </body>
 </html>
