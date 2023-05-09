@@ -2,10 +2,12 @@ package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -43,8 +45,18 @@ public class UserController {
         return "user/addUser";
     }
     //метод, принимающий Post запрос создающий пользователя и добавляющий его в БД
+//    @PostMapping("addUser")
+//    public String createNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+//        if(bindingResult.hasErrors()){
+//            return "user/addUser";
+//        } else {
+//            userService.addUser(user);
+//            return "redirect:/";
+//        }
+//    }
     @PostMapping("addUser")
     public String createNewUser(@ModelAttribute("user") User user) {
+        System.out.println(user);
         userService.addUser(user);
         return "redirect:/";
     }
@@ -56,9 +68,16 @@ public class UserController {
     }
 
    @PatchMapping("/user/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
-        userService.update(user);
-        return "redirect:/";
+    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
+                         @PathVariable("id") int id){
+        if (bindingResult.hasErrors()){
+            return "user/edit";
+        } else {
+            userService.update(user);
+            return "redirect:/";
+        }
+
+
     }
 
     @DeleteMapping("user/{id}")

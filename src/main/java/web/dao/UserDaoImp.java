@@ -30,7 +30,7 @@ public class UserDaoImp implements UserDao {
     @Override
     public User getSingleUserById(int id) {
         TypedQuery<User> typedQuery = entityManager.createQuery
-                ("select u from User u where u.id = :id", User.class);
+                ("select us from User us where us.id = :id", User.class);
         typedQuery.setParameter("id", id);
         return typedQuery.getResultList().stream().findFirst().orElse(null);
     }

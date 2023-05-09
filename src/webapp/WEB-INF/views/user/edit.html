@@ -22,20 +22,20 @@
 </head>
 <body>
 
-<form th:method="patch" th:action="@{/user/{id}(id=${user.getId()})}" th:object="${user}">
+    <form th:method="patch" th:action="@{/user/{id}(id=${user.getId()})}" th:object="${user}">
 
-<label for="firstname">Enter First Name: </label>-->
-<input type="text" th:field="${user.firstName}" id="firstname"/>
-<label for="lastname">Enter Last Name: </label>-->
-<input type="text" th:field="${user.lastName}" id="lastname"/>
-<label for="age">Enter age: </label>-->
-<input type="text" th:field="${user.age}" id="age"/>
-    <label for="email">Enter email: </label>-->
-    <input type="text" th:field="${user.email}" id="email"/>
+        <label for="firstname">Enter First Name: </label>-->
+        <input type="text" th:field="${user.firstName}" required id="firstname"/>
+        <label for="lastname">Enter Last Name: </label>-->
+        <input type="text" th:field="${user.lastName}" required id="lastname"/>
+        <label for="age">Enter age: </label>-->
+        <input type="text" th:field="${user.age}" required id="age"/>
+        <label for="email">Enter email: </label>-->
+        <input type="text" th:field="${user.email}" required id="email"/>
 
-<br/>
-<input type="submit" value="Update!"/>
-</form>
+        <br/>
+        <input type="submit" value="Update!"/>
+    </form>
 
 
 </body>
