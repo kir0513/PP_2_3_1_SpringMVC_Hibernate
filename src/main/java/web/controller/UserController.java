@@ -45,21 +45,21 @@ public class UserController {
         return "user/addUser";
     }
     //метод, принимающий Post запрос создающий пользователя и добавляющий его в БД
-//    @PostMapping("addUser")
-//    public String createNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-//        if(bindingResult.hasErrors()){
-//            return "user/addUser";
-//        } else {
-//            userService.addUser(user);
-//            return "redirect:/";
-//        }
-//    }
     @PostMapping("addUser")
-    public String createNewUser(@ModelAttribute("user") User user) {
-        System.out.println(user);
-        userService.addUser(user);
-        return "redirect:/";
+    public String createNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "user/addUser";
+        } else {
+            userService.addUser(user);
+            return "redirect:/";
+        }
     }
+//    @PostMapping("addUser")
+//    public String createNewUser(@ModelAttribute("user") User user) {
+//        System.out.println(user);
+//        userService.addUser(user);
+//        return "redirect:/";
+//    }
 
     @GetMapping("/user/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
